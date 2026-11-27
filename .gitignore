@@ -1,0 +1,14 @@
+.env
+.env.*
+*.log
+.venv/
+venv/
+node_modules/
+__pycache__/
+.pytest_cache/
+.DS_Store
+data/
+*.gguf
+*.safetensors
+*.pt
+*.ckpt
