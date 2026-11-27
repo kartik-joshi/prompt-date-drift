@@ -6,8 +6,9 @@ current" questions. The only thing that changes between runs is the date stated 
 none, 2023-06-01, 2025-01-01, 2026-11-27 or 2030-01-01. Every answer is parsed and scored in Python
 against ground truth computed with `datetime` relative to the stated date.
 
-The arXiv paper listed in the build spec (arXiv:2611.31254) motivated this repo. I don't reproduce
-any of that paper's numbers here. Everything below was measured with the code in this repo.
+Motivated by [*The Date You Didn't Set: The System-Prompt Date as a Hidden Variable in LLM
+Evaluation*](https://arxiv.org/abs/2611.31254) (arXiv:2611.31254). This repo doesn't reproduce that
+paper's numbers. Everything below was measured with the code in this repo.
 
 ## Headline result
 
