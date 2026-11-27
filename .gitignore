@@ -12,3 +12,4 @@ data/
 *.safetensors
 *.pt
 *.ckpt
+*.egg-info/
