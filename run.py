@@ -35,6 +35,8 @@ def main(argv=None) -> None:
     ap.add_argument("--limit", type=int, default=None, help="only the first N questions (smoke test)")
     ap.add_argument("--cache", default="results/cache.jsonl")
     ap.add_argument("--out", default="results/results.jsonl")
+    ap.add_argument("--max-seconds", type=float, default=None,
+                    help="stop querying after this long (cache keeps progress; re-run to resume)")
     args = ap.parse_args(argv)
 
     questions = generate(args.seed)[: args.limit]
@@ -47,6 +49,10 @@ def main(argv=None) -> None:
     for model in args.models:
         for sd in SYSTEM_DATES:
             for q in questions:
+                if args.max_seconds is not None and time.time() - t0 > args.max_seconds:
+                    print(f"time budget hit after {done}/{total} rows; re-run to resume from cache",
+                          file=sys.stderr)
+                    sys.exit(3)
                 r = ask(cache, model, sd, q)
                 rows.append(
                     {
