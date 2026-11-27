@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: prompt-date-drift
+Version: 0.1.0
+Summary: Does the system-prompt date change a local model's answers?
+License: MIT
+Requires-Python: >=3.11
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: requests
+Requires-Dist: matplotlib
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"

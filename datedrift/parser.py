@@ -57,7 +57,10 @@ def parse_weekday(text: str) -> str | None:
     hits = _ANY_DAY.findall(text)
     if hits:
         return _DAY_ALIASES[hits[-1].lower()]
-    return None
+    # A bare abbreviation ("Tue", "Sat.") is only accepted as the entire response, since
+    # short tokens like "sun"/"wed" are too ambiguous inside running text.
+    bare = text.strip().strip(".*!").lower()
+    return _DAY_ALIASES.get(bare)
 
 
 def parse(text: str, answer_type: str) -> int | str | None:

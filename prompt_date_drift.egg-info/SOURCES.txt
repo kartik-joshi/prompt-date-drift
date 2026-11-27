@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+datedrift/__init__.py
+datedrift/client.py
+datedrift/parser.py
+datedrift/questions.py
+datedrift/scoring.py
+prompt_date_drift.egg-info/PKG-INFO
+prompt_date_drift.egg-info/SOURCES.txt
+prompt_date_drift.egg-info/dependency_links.txt
+prompt_date_drift.egg-info/requires.txt
+prompt_date_drift.egg-info/top_level.txt
+tests/test_parser.py
+tests/test_questions_client.py
+tests/test_score_fixture.py
