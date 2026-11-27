@@ -39,6 +39,17 @@ def main(argv=None) -> None:
             acc = sub.groupby("system_date")["correct"].mean()
             print(f"| {model} | {kind} | " + " | ".join(f"{100 * acc[d]:.1f}" for d in ["none"] + stated) + " |")
 
+    if args.by_kind:
+        # age_in_year asks "how old do they turn this calendar year?", so
+        # birth_year + parsed answer is the year the model implicitly believes it is.
+        print("\nImplied current year from age_in_year answers (top 3, count of 50):\n")
+        print("| model | system date | implied year: count |")
+        print("|---|---|---|")
+        ages = df[(df.kind == "age_in_year") & ~df.unparsed]
+        for (model, d), sub in ages.groupby(["model", "system_date"]):
+            years = (sub["parsed"].astype(int) + [q["birth_year"] for q in sub["question"]]).value_counts()
+            print(f"| {model} | {d} | " + ", ".join(f"{y}: {n}" for y, n in years.head(3).items()) + " |")
+
     if args.json:
         with open(args.json, "w") as f:
             json.dump(

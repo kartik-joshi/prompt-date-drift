@@ -36,15 +36,13 @@ def main(argv=None) -> None:
         err = np.vstack([c.flip - c.flip_lo, c.flip_hi - c.flip]) * 100
         ax.bar(xs, c.flip * 100, width * 0.9, color=COLORS[i % len(COLORS)], label=m)
         ax.errorbar(xs, c.flip * 100, yerr=err, fmt="none", ecolor="#333333", capsize=3, lw=1)
-    truth = cells.groupby("system_date").truth_flip.first().loc[dates] * 100
-    ax.scatter(x, truth, marker="_", s=900, color="#333333", zorder=3, label="% of true answers that differ from run-date (2026-11-27) truth")
     ax.set_xticks(x, dates)
     ax.set_xlabel("date stated in system prompt")
     ax.set_ylabel("answers changed vs no-date baseline (%)")
-    ax.set_ylim(0, 105)
-    ax.set_title("Answer flip rate by system-prompt date (200 questions, 95% CI)")
+    ax.set_ylim(0, 100)
+    ax.set_title("Answers changed vs no-date baseline (200 questions, 95% bootstrap CI)", fontsize=10)
     ax.spines[["top", "right"]].set_visible(False)
-    ax.legend(frameon=False, fontsize=8, loc="upper left")
+    ax.legend(frameon=False, fontsize=8, loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=len(models))
     fig.tight_layout()
     fig.savefig(args.out)
     print(f"wrote {args.out}")
