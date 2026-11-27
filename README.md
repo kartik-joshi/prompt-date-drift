@@ -21,7 +21,7 @@ bootstrap over questions.
 | llama3.2:3b | **84.5%** [82.2, 86.5] |
 | qwen2.5:3b-instruct | **81.2%** [76.2, 85.9] |
 
-Measured on commit `2ca7bd0`. The raw responses were generated on commit `b5574e0` with the same
+Measured on commit `36a257a`. The raw responses were generated on commit `b138eaa` with the same
 prompts, client and parser (each row of `results/results.jsonl` records its commit). To reproduce
 these numbers from the committed responses without Ollama, run
 `python score.py results/results.jsonl`.
