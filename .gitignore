@@ -13,3 +13,8 @@ data/
 *.pt
 *.ckpt
 *.egg-info/
+
+# Build lab notes, kept local
+BUILD_PROMPT.md
+CLAUDE.md
+STATUS.md
